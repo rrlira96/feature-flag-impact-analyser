@@ -1,2 +1,2 @@
-NYPL/discovery-front-end
-DeFiCh/wallet
+zooniverse/Panoptes
+facebook/react
