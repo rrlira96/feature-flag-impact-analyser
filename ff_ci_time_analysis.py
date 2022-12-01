@@ -7,11 +7,12 @@ import re
 import csv
 import requests
 import time
+import sys
 
 
 def processing_ci_time(repo, sha, add_or_remove):
     global sequence_of_commits_without_actions
-    url = 'http://172.29.146.233:3000/repos/' + repo + '/actions/runs'
+    url = 'https://api.github.com/repos/' + repo + '/actions/runs'
     params = {'head_sha': sha,'status':'success'}
     response = requests.get(url=url, params=params)
     if response.status_code == 200:
@@ -57,9 +58,9 @@ def processing_commit(sha, msg):
 
 def check_api_rate_limit():
     logger.info('Checking API rate limit')
-    remaining_limit = g_2.get_rate_limit().core.remaining
+    remaining_limit = g.get_rate_limit().core.remaining
     if remaining_limit <= 120:
-        core_rate_limit = g_2.get_rate_limit().core
+        core_rate_limit = g.get_rate_limit().core
         reset_timestamp = calendar.timegm(core_rate_limit.reset.timetuple())
         sleep_time = reset_timestamp - calendar.timegm(time.gmtime()) + 5
         logger.info('The rate api limit is being reched. Sleeping {} seconds'.format(sleep_time))
@@ -67,8 +68,7 @@ def check_api_rate_limit():
 
 
 
-g = Github(base_url="http://172.29.146.233:3000")
-g_2 = Github('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')
+g = Github(login_or_token=sys.argv[1])
 
 add_ff_regex_pattern = "(?i)(add|added|adding)[\s\S]*(feature(-)?( )?(flag|toggle|flipper|switch))"
 remove_ff_regex_pattern = "(?i)(remove|removing|removed|delete|deleting|deleted)[\s\S]*(feature(-)?( )?(flag|toggle|flipper|switch))"
