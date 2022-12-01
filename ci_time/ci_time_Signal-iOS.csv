@@ -1,0 +1,6 @@
+repository,commit_sha,ci_time,is_feature_flag,ff_add_or_remove
+signalapp/Signal-iOS,a929cd13cf77712f861dbfab6979bec7278e400b,1822.0,False,N/A
+signalapp/Signal-iOS,1b5691e019dee0d56eff13f95d9331fe0e001df7,1850.0,False,N/A
+signalapp/Signal-iOS,465d00664b46a73123f7e7d7c42e3f50d8608183,1369.0,False,N/A
+signalapp/Signal-iOS,35bc42d159f0652900aa8bf3892415a533f20b00,1494.0,False,N/A
+signalapp/Signal-iOS,0326453d0d560af978a61e5ddd27bd14e51978fd,1683.0,False,N/A
