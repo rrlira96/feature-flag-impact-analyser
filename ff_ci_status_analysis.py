@@ -79,11 +79,11 @@ g = Github(login_or_token=sys.argv[1])
 add_ff_regex_pattern = "(?i)(add|added|adding)[\s\S]*(feature(-)?( )?(flag|toggle|flipper|switch))"
 remove_ff_regex_pattern = "(?i)(remove|removing|removed|delete|deleting|deleted)[\s\S]*(feature(-)?( )?(flag|toggle|flipper|switch))"
 
-f = open('ci_status.csv', 'a')
+f = open('ci_status.csv', 'w')
 writer_ci = csv.writer(f)
-#header = ['repository', 'language', 'total_commits', 'add_or_remove', 'feature_flag_commits', 'failed_ci_commits', 'not_failed_ci_commits', 'no_ci_commits',
-#          'add_or_remove', 'feature_flag_commits', 'failed_ci_commits', 'not_failed_ci_commits', 'no_ci_commits']
-#writer_ci.writerow(header)
+header = ['repository', 'language', 'total_commits', 'add_or_remove', 'feature_flag_commits', 'failed_ci_commits', 'not_failed_ci_commits', 'no_ci_commits',
+          'add_or_remove', 'feature_flag_commits', 'failed_ci_commits', 'not_failed_ci_commits', 'no_ci_commits']
+writer_ci.writerow(header)
 
 logger = logging.getLogger()
 logging.basicConfig(
